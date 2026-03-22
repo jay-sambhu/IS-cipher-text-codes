@@ -63,14 +63,63 @@ def decrypt_rail_fence(cipher, rails):
     return result
 
 
+def get_rail_path(length, rails):
+    row = 0
+    direction_down = True
+    path = []
+
+    for _ in range(length):
+        path.append(row)
+        if row == 0:
+            direction_down = True
+        elif row == rails - 1:
+            direction_down = False
+        row += 1 if direction_down else -1
+
+    return path
+
+
+def print_rail_table(title, input_text, output_text, path, input_label, output_label):
+    print(f"\n{title}")
+    print("+-----+-------+------+--------+")
+    print(f"| Pos | {input_label:^5} | Rail | {output_label:^6} |")
+    print("+-----+-------+------+--------+")
+
+    for index, (inp, outp, rail_row) in enumerate(zip(input_text, output_text, path), start=1):
+        print(f"| {str(index).rjust(3)} | {inp.center(5)} | {str(rail_row + 1).rjust(4)} | {outp.center(6)} |")
+
+    print("+-----+-------+------+--------+")
+
+
+def print_styled_output(mode, text, rails, result):
+    operation = "ENCRYPTION" if mode == 'e' else "DECRYPTION"
+    print("\n" + "=" * 44)
+    print(f"       RAIL FENCE CIPHER {operation}")
+    print("=" * 44)
+    print(f"Input  : {text}")
+    print(f"Rails  : {rails}")
+    print(f"Output : {result}")
+    print("=" * 44)
+
+
 # ---- MAIN ----
 text = input("Enter text: ")
 rails = int(input("Enter number of rails: "))
 choice = input("Enter e for encrypt or d for decrypt: ").lower()
 
+if rails < 2:
+    print("Number of rails must be at least 2")
+    exit()
+
 if choice == 'e':
-    print("Encrypted:", encrypt_rail_fence(text, rails))
+    result = encrypt_rail_fence(text, rails)
+    path = get_rail_path(len(text), rails)
+    print_rail_table("Encryption Table", text, result, path, "Input", "Output")
+    print_styled_output(choice, text, rails, result)
 elif choice == 'd':
-    print("Decrypted:", decrypt_rail_fence(text, rails))
+    result = decrypt_rail_fence(text, rails)
+    path = get_rail_path(len(text), rails)
+    print_rail_table("Decryption Table", text, result, path, "Cipher", "Plain")
+    print_styled_output(choice, text, rails, result)
 else:
     print("Invalid choice")

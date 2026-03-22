@@ -60,6 +60,34 @@ def prepare_text(text, for_encrypt=True):
     return pairs
 
 
+def transform_playfair_pair(matrix, a, b, mode):
+    row1, col1 = find_position(matrix, a)
+    row2, col2 = find_position(matrix, b)
+
+    if row1 == row2:
+        if mode == 'e':
+            out_a = matrix[row1][(col1 + 1) % 5]
+            out_b = matrix[row2][(col2 + 1) % 5]
+        else:
+            out_a = matrix[row1][(col1 - 1) % 5]
+            out_b = matrix[row2][(col2 - 1) % 5]
+        rule = "Same row"
+    elif col1 == col2:
+        if mode == 'e':
+            out_a = matrix[(row1 + 1) % 5][col1]
+            out_b = matrix[(row2 + 1) % 5][col2]
+        else:
+            out_a = matrix[(row1 - 1) % 5][col1]
+            out_b = matrix[(row2 - 1) % 5][col2]
+        rule = "Same column"
+    else:
+        out_a = matrix[row1][col2]
+        out_b = matrix[row2][col1]
+        rule = "Rectangle"
+
+    return out_a, out_b, rule
+
+
 def encrypt_playfair(plaintext, key):
     matrix = generate_key_matrix(key)
     pairs = prepare_text(plaintext, for_encrypt=True)
@@ -67,18 +95,8 @@ def encrypt_playfair(plaintext, key):
 
     for pair in pairs:
         a, b = pair[0], pair[1]
-        row1, col1 = find_position(matrix, a)
-        row2, col2 = find_position(matrix, b)
-
-        if row1 == row2:
-            ciphertext += matrix[row1][(col1 + 1) % 5]
-            ciphertext += matrix[row2][(col2 + 1) % 5]
-        elif col1 == col2:
-            ciphertext += matrix[(row1 + 1) % 5][col1]
-            ciphertext += matrix[(row2 + 1) % 5][col2]
-        else:
-            ciphertext += matrix[row1][col2]
-            ciphertext += matrix[row2][col1]
+        out_a, out_b, _ = transform_playfair_pair(matrix, a, b, 'e')
+        ciphertext += out_a + out_b
 
     return ciphertext
 
@@ -90,26 +108,71 @@ def decrypt_playfair(ciphertext, key):
 
     for pair in pairs:
         a, b = pair[0], pair[1]
-        row1, col1 = find_position(matrix, a)
-        row2, col2 = find_position(matrix, b)
-
-        if row1 == row2:
-            plaintext += matrix[row1][(col1 - 1) % 5]
-            plaintext += matrix[row2][(col2 - 1) % 5]
-        elif col1 == col2:
-            plaintext += matrix[(row1 - 1) % 5][col1]
-            plaintext += matrix[(row2 - 1) % 5][col2]
-        else:
-            plaintext += matrix[row1][col2]
-            plaintext += matrix[row2][col1]
+        out_a, out_b, _ = transform_playfair_pair(matrix, a, b, 'd')
+        plaintext += out_a + out_b
 
     return plaintext
+
+
+def encrypt_playfair_with_steps(plaintext, key):
+    matrix = generate_key_matrix(key)
+    pairs = prepare_text(plaintext, for_encrypt=True)
+    ciphertext = ""
+    steps = []
+
+    for index, pair in enumerate(pairs, start=1):
+        a, b = pair[0], pair[1]
+        out_a, out_b, rule = transform_playfair_pair(matrix, a, b, 'e')
+        out_pair = out_a + out_b
+        ciphertext += out_pair
+        steps.append((index, pair, rule, out_pair))
+
+    return ciphertext, steps
+
+
+def decrypt_playfair_with_steps(ciphertext, key):
+    matrix = generate_key_matrix(key)
+    pairs = prepare_text(ciphertext, for_encrypt=False)
+    plaintext = ""
+    steps = []
+
+    for index, pair in enumerate(pairs, start=1):
+        a, b = pair[0], pair[1]
+        out_a, out_b, rule = transform_playfair_pair(matrix, a, b, 'd')
+        out_pair = out_a + out_b
+        plaintext += out_pair
+        steps.append((index, pair, rule, out_pair))
+
+    return plaintext, steps
 
 
 def print_matrix(matrix):
     print("Key Matrix:")
     for row in matrix:
         print(" ".join(row))
+
+
+def print_playfair_table(title, steps):
+    print(f"\n{title}")
+    print("+------+-------+-------------+--------+")
+    print("| Pair | Input | Rule        | Output |")
+    print("+------+-------+-------------+--------+")
+
+    for pair_no, pair_in, rule, pair_out in steps:
+        print(f"| {str(pair_no).rjust(4)} | {pair_in.center(5)} | {rule.ljust(11)} | {pair_out.center(6)} |")
+
+    print("+------+-------+-------------+--------+")
+
+
+def print_styled_output(mode, text, key, result):
+    operation = "ENCRYPTION" if mode == 'e' else "DECRYPTION"
+    print("\n" + "=" * 44)
+    print(f"         PLAYFAIR CIPHER {operation}")
+    print("=" * 44)
+    print(f"Input  : {text}")
+    print(f"Key    : {key}")
+    print(f"Output : {result}")
+    print("=" * 44)
 
 
 # Example usage
@@ -121,10 +184,12 @@ matrix = generate_key_matrix(key)
 print_matrix(matrix)
 
 if choice == 'e':
-    result = encrypt_playfair(text, key)
-    print("Encrypted Text:", result)
+    result, steps = encrypt_playfair_with_steps(text, key)
+    print_playfair_table("Encryption Table", steps)
+    print_styled_output(choice, text.upper(), key.upper(), result)
 elif choice == 'd':
-    result = decrypt_playfair(text, key)
-    print("Decrypted Text:", result)
+    result, steps = decrypt_playfair_with_steps(text, key)
+    print_playfair_table("Decryption Table", steps)
+    print_styled_output(choice, text.upper(), key.upper(), result)
 else:
     print("Invalid choice!")
