@@ -57,6 +57,26 @@ def print_vigenere_steps_table(input_text, expanded_key, output_text, mode):
     print("+-----+-------+-----+--------+")
 
 
+def print_vigenere_square():
+    alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    print("\nVigenere Square (Tabula Recta):")
+    print("    " + " ".join(alphabet))
+    for row_index, row_char in enumerate(alphabet):
+        row = alphabet[row_index:] + alphabet[:row_index]
+        print(f"{row_char:>2}  " + " ".join(row))
+
+
+def print_styled_result(mode, input_text, key, result):
+    operation = "ENCRYPTION" if mode == 'e' else "DECRYPTION"
+    print("\n" + "=" * 44)
+    print(f"         VIGENERE CIPHER {operation}")
+    print("=" * 44)
+    print(f"Input  : {input_text}")
+    print(f"Key    : {key.upper()}")
+    print(f"Output : {result}")
+    print("=" * 44)
+
+
 text = input("Enter text: ")
 key = input("Enter key: ")
 choice = input("Enter e for encryption or d for decryption: ").lower()
@@ -68,12 +88,14 @@ if not key.strip():
 if choice == 'e':
     result = encrypt_vigenere(text, key)
     expanded_key = generate_key(text.upper(), key)
+    print_vigenere_square()
     print_vigenere_steps_table(text.upper(), expanded_key, result, choice)
-    print("Encrypted text:", result)
+    print_styled_result(choice, text.upper(), key, result)
 elif choice == 'd':
     result = decrypt_vigenere(text, key)
     expanded_key = generate_key(text.upper(), key)
+    print_vigenere_square()
     print_vigenere_steps_table(text.upper(), expanded_key, result, choice)
-    print("Decrypted text:", result)
+    print_styled_result(choice, text.upper(), key, result)
 else:
     print("Invalid choice")
