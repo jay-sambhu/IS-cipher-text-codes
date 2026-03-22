@@ -44,15 +44,36 @@ def decrypt_vigenere(cipher_text, key):
     return plain_text
 
 
+def print_vigenere_steps_table(input_text, expanded_key, output_text, mode):
+    operation = "Encrypt" if mode == 'e' else "Decrypt"
+    print(f"\n{operation}ion table:")
+    print("+-----+-------+-----+--------+")
+    print("| Pos | Input | Key | Output |")
+    print("+-----+-------+-----+--------+")
+
+    for index, (inp, key_char, outp) in enumerate(zip(input_text, expanded_key, output_text), start=1):
+        print(f"| {str(index).rjust(3)} | {inp.center(5)} | {key_char.center(3)} | {outp.center(6)} |")
+
+    print("+-----+-------+-----+--------+")
+
+
 text = input("Enter text: ")
 key = input("Enter key: ")
 choice = input("Enter e for encryption or d for decryption: ").lower()
 
+if not key.strip():
+    print("Key cannot be empty")
+    exit()
+
 if choice == 'e':
     result = encrypt_vigenere(text, key)
+    expanded_key = generate_key(text.upper(), key)
+    print_vigenere_steps_table(text.upper(), expanded_key, result, choice)
     print("Encrypted text:", result)
 elif choice == 'd':
     result = decrypt_vigenere(text, key)
+    expanded_key = generate_key(text.upper(), key)
+    print_vigenere_steps_table(text.upper(), expanded_key, result, choice)
     print("Decrypted text:", result)
 else:
     print("Invalid choice")
