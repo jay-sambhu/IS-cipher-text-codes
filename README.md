@@ -1,130 +1,219 @@
-# Information Security Ciphers in Python
+<style>
+   :root {
+      --bg: #0f172a;
+      --card: #111827;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --accent: #22c55e;
+      --accent-soft: #1f2937;
+      --border: #374151;
+   }
 
-A practical **Information Security** project that demonstrates classic cryptography algorithms in Python, including **Caesar Cipher**, **Playfair Cipher**, **Rail Fence Cipher**, **Vigenère Cipher**, and a simple **Stream Cipher (XOR-based)**.
+   .readme-wrap {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background: linear-gradient(180deg, #0b1220 0%, #111827 100%);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 28px;
+      margin: 8px 0;
+   }
 
-This repository is useful for students, beginners, and cybersecurity learners who want to understand encryption and decryption step by step with interactive terminal programs.
+   .title {
+      margin: 0;
+      font-size: 2rem;
+      color: #f9fafb;
+   }
 
-## Keywords (SEO)
+   .subtitle {
+      margin-top: 8px;
+      color: var(--muted);
+   }
 
-Information Security, Cryptography, Python Cipher Project, Caesar Cipher Python, Playfair Cipher Python, Rail Fence Cipher, Vigenere Cipher, Stream Cipher XOR, Encryption Decryption, Cybersecurity Learning
+   .badge {
+      display: inline-block;
+      margin: 10px 8px 0 0;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--accent-soft);
+      color: #d1fae5;
+      font-size: 0.85rem;
+   }
 
-## Table of Contents
+   .card {
+      margin-top: 20px;
+      padding: 16px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: rgba(17, 24, 39, 0.75);
+   }
 
-- [Project Overview](#project-overview)
-- [Cipher Implementations](#cipher-implementations)
-- [Project Structure](#project-structure)
-- [Requirements](#requirements)
-- [How to Run](#how-to-run)
-- [Example Usage](#example-usage)
-- [Educational Note](#educational-note)
-- [How to Make This Publicly Available](#how-to-make-this-publicly-available)
-- [License](#license)
+   .card h2 {
+      margin-top: 0;
+      color: #f3f4f6;
+      border-left: 4px solid var(--accent);
+      padding-left: 10px;
+   }
 
-## Project Overview
+   .toc a {
+      color: #93c5fd;
+      text-decoration: none;
+   }
 
-This project contains command-line Python programs that perform:
+   .toc a:hover {
+      text-decoration: underline;
+   }
 
-- Text encryption
-- Text decryption
-- Tabular step-by-step output for learning
-- Key-based and transposition-based cipher workflows
+   ul {
+      margin: 8px 0 0 20px;
+   }
 
-It is designed for academic demonstration and concept learning in cryptography.
+   code,
+   pre {
+      font-family: "Fira Code", Consolas, monospace;
+   }
 
-## Cipher Implementations
+   pre {
+      background: #0b1020;
+      border: 1px solid #253047;
+      border-radius: 8px;
+      padding: 14px;
+      overflow-x: auto;
+      color: #d1d5db;
+   }
 
-### 1) Caesar Cipher
-- File: `CeaserCipher.py`
-- Type: Substitution cipher
-- Key idea: Shifts letters by a fixed numeric key
+   .warning {
+      border-left: 4px solid #f59e0b;
+      padding: 10px 12px;
+      background: rgba(245, 158, 11, 0.1);
+      border-radius: 6px;
+      color: #fde68a;
+   }
 
-### 2) Playfair Cipher
-- File: `PlayfairCipher.py`
-- Type: Digraph substitution cipher
-- Key idea: Uses a 5x5 key matrix and pair-based transformation rules
+   .footer-note {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 0.92rem;
+   }
+</style>
 
-### 3) Rail Fence Cipher
-- File: `RailfnceCipher.py`
-- Type: Transposition cipher
-- Key idea: Rearranges text in zig-zag rail pattern
+<div class="readme-wrap">
+   <h1 class="title">Information Security Ciphers in Python</h1>
+   <p class="subtitle">
+      A practical Information Security project that demonstrates classic cryptography algorithms in Python: Caesar, Playfair,
+      Rail Fence, Vigenère, and a simple XOR-based Stream Cipher.
+   </p>
 
-### 4) Stream Cipher (XOR)
-- File: `StreamCipher.py`
-- Type: Symmetric XOR-based stream encryption
-- Key idea: Repeats key bytes and XORs with plaintext bytes
+   <span class="badge">Python 3.8+</span>
+   <span class="badge">Cryptography Learning</span>
+   <span class="badge">No External Dependencies</span>
 
-### 5) Vigenère Cipher
-- File: `VigenereCipher.py`
-- Type: Polyalphabetic substitution cipher
-- Key idea: Uses repeating alphabetic key shifts
+   <div class="card toc">
+      <h2>Table of Contents</h2>
+      <ul>
+         <li><a href="#project-overview">Project Overview</a></li>
+         <li><a href="#cipher-implementations">Cipher Implementations</a></li>
+         <li><a href="#project-structure">Project Structure</a></li>
+         <li><a href="#requirements">Requirements</a></li>
+         <li><a href="#how-to-run">How to Run</a></li>
+         <li><a href="#example-usage">Example Usage</a></li>
+         <li><a href="#educational-note">Educational Note</a></li>
+         <li><a href="#how-to-make-this-publicly-available">How to Make This Publicly Available</a></li>
+         <li><a href="#license">License</a></li>
+      </ul>
+   </div>
 
-## Project Structure
+   <div class="card" id="project-overview">
+      <h2>Project Overview</h2>
+      <p>
+         This project contains command-line Python programs for text encryption and decryption, including educational
+         step-by-step output and key-based/transposition-based workflows.
+      </p>
+   </div>
 
-```bash
-.
+   <div class="card" id="cipher-implementations">
+      <h2>Cipher Implementations</h2>
+      <ul>
+         <li><strong>Caesar Cipher</strong> — <code>CeaserCipher.py</code> — substitution by fixed shift key.</li>
+         <li><strong>Playfair Cipher</strong> — <code>PlayfairCipher.py</code> — digraph substitution using 5x5 key matrix.</li>
+         <li><strong>Rail Fence Cipher</strong> — <code>RailfnceCipher.py</code> — transposition via zig-zag rails.</li>
+         <li><strong>Stream Cipher (XOR)</strong> — <code>StreamCipher.py</code> — repeated key-byte XOR encryption.</li>
+         <li><strong>Vigenère Cipher</strong> — <code>VigenereCipher.py</code> — polyalphabetic substitution with repeating key.</li>
+      </ul>
+   </div>
+
+   <div class="card" id="project-structure">
+      <h2>Project Structure</h2>
+      <pre><code>.
 ├── CeaserCipher.py
 ├── PlayfairCipher.py
 ├── RailfnceCipher.py
 ├── StreamCipher.py
 ├── VigenereCipher.py
-└── README.md
-```
+└── README.md</code></pre>
+   </div>
 
-## Requirements
+   <div class="card" id="requirements">
+      <h2>Requirements</h2>
+      <ul>
+         <li>Python 3.8+ recommended</li>
+         <li>No third-party packages required</li>
+      </ul>
+   </div>
 
-- Python 3.8+ (recommended)
-- No external dependencies required
-
-## How to Run
-
-Run any script directly from terminal:
-
-```bash
-python3 CeaserCipher.py
+   <div class="card" id="how-to-run">
+      <h2>How to Run</h2>
+      <pre><code>python3 CeaserCipher.py
 python3 PlayfairCipher.py
 python3 RailfnceCipher.py
 python3 StreamCipher.py
-python3 VigenereCipher.py
-```
+python3 VigenereCipher.py</code></pre>
+   </div>
 
-## Example Usage
+   <div class="card" id="example-usage">
+      <h2>Example Usage</h2>
+      <ul>
+         <li>Enter plaintext/ciphertext when prompted.</li>
+         <li>Provide the required key (shift, word key, or rail count).</li>
+         <li>Select encryption (<code>e</code>) or decryption (<code>d</code>).</li>
+         <li>Review formatted output/tables generated by the script.</li>
+      </ul>
+   </div>
 
-- Enter input text when prompted.
-- Provide cipher key (shift value, word key, or rail count depending on the algorithm).
-- Select encryption (`e`) or decryption (`d`) where requested.
-- Review generated tables and formatted output.
+   <div class="card" id="educational-note">
+      <h2>Educational Note</h2>
+      <p class="warning">
+         These are classic ciphers for learning cryptography fundamentals and are not secure for modern production communication.
+      </p>
+   </div>
 
-## Educational Note
-
-These algorithms are classic and important for learning cryptography fundamentals. They are **not suitable for modern secure communication** in production systems.
-
-## How to Make This Publicly Available
-
-To publish and improve visibility on GitHub:
-
-1. Create a new GitHub repository (public).
-2. Push this project:
-
-```bash
-git init
+   <div class="card" id="how-to-make-this-publicly-available">
+      <h2>How to Make This Publicly Available</h2>
+      <ol>
+         <li>Create a new public GitHub repository.</li>
+         <li>Push your project:</li>
+      </ol>
+      <pre><code>git init
 git add .
 git commit -m "Add classic cipher implementations"
 git branch -M main
-git remote add origin https://github.com/<your-username>/<your-repo>.git
-git push -u origin main
-```
+git remote add origin https://github.com/&lt;your-username&gt;/&lt;your-repo&gt;.git
+git push -u origin main</code></pre>
+      <ol start="3">
+         <li>In repository settings, set visibility to Public and add relevant topics.</li>
+         <li>Optional: Add badges, social preview image, and SEO-friendly description.</li>
+      </ol>
+   </div>
 
-3. In repository settings:
-   - Confirm visibility is **Public**
-   - Add repository description with keywords like “Python cryptography ciphers”
-   - Add topics: `cryptography`, `python`, `cipher`, `caesar-cipher`, `vigenere-cipher`, `cybersecurity`, `information-security`
-   - Enable README display on repository home
+   <div class="card" id="license">
+      <h2>License</h2>
+      <p>Use an MIT License for open educational use by adding a <code>LICENSE</code> file.</p>
+   </div>
 
-4. Optional SEO improvements:
-   - Add a social preview image
-   - Add badges (Python version, license)
-   - Keep README title and headings keyword-focused
-
-## License
-
-You can use an MIT License for open educational use. Add a `LICENSE` file if you want formal open-source licensing.
+   <p class="footer-note">
+      Keywords: Information Security, Cryptography, Python Cipher Project, Caesar Cipher, Playfair Cipher, Rail Fence Cipher,
+      Vigenere Cipher, Stream Cipher XOR, Encryption, Decryption, Cybersecurity Learning.
+   </p>
+</div>
