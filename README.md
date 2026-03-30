@@ -1,9 +1,9 @@
 <!-- Real-Time GitHub Metrics Badges -->
 
-[![GitHub Stars](https://img.shields.io/github/stars/devxgamer/IS-cipher-text-codes-ewpo?style=flat-square)](https://github.com/devxgamer/IS-cipher-text-codes-ewpo/stargazers)
-[![GitHub Forks](https://img.shields.io/github/forks/devxgamer/IS-cipher-text-codes-ewpo?style=flat-square)](https://github.com/devxgamer/IS-cipher-text-codes-ewpo/network/members)
-[![GitHub Issues](https://img.shields.io/github/issues/devxgamer/IS-cipher-text-codes-ewpo?style=flat-square)](https://github.com/devxgamer/IS-cipher-text-codes-ewpo/issues)
-[![GitHub Last Commit](https://img.shields.io/github/last-commit/devxgamer/IS-cipher-text-codes-ewpo?style=flat-square)](https://github.com/devxgamer/IS-cipher-text-codes-ewpo/commits/main)
+[![GitHub Stars](https://img.shields.io/github/stars/jay-sambhu/IS-cipher-text-codes?style=flat-square)](https://github.com/jay-sambhu/IS-cipher-text-codes/stargazers)
+[![GitHub Forks](https://img.shields.io/github/forks/jay-sambhu/IS-cipher-text-codes?style=flat-square)](https://github.com/jay-sambhu/IS-cipher-text-codes/network/members)
+[![GitHub Issues](https://img.shields.io/github/issues/jay-sambhu/IS-cipher-text-codes?style=flat-square)](https://github.com/jay-sambhu/IS-cipher-text-codes/issues)
+[![GitHub Last Commit](https://img.shields.io/github/last-commit/jay-sambhu/IS-cipher-text-codes?style=flat-square)](https://github.com/jay-sambhu/IS-cipher-text-codes/commits/main)
 
 # Information Security Ciphers in Python
 
@@ -74,7 +74,7 @@ python3 VigenereCipher.py
    git add .
    git commit -m "Add classic cipher implementations"
    git branch -M main
-   git remote add origin https://github.com/devxgamer/IS-cipher-text-codes-ewpo.git
+   git remote add origin https://github.com/jay-sambhu/IS-cipher-text-codes.git
    git push -u origin main
    ```
 3. In repository settings, set visibility to Public and add relevant topics.
