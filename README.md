@@ -11,16 +11,20 @@ A practical Information Security project that demonstrates classic cryptography 
 
 **Python 3.8+** | **Cryptography Learning** | **No External Dependencies**
 
-## Table of Contents
-- [Project Overview](#project-overview)
-- [Cipher Implementations](#cipher-implementations)
-- [Project Structure](#project-structure)
-- [Requirements](#requirements)
-- [How to Run](#how-to-run)
-- [Example Usage](#example-usage)
-- [Educational Note](#educational-note)
-- [How to Make This Publicly Available](#how-to-make-this-publicly-available)
-- [License](#license)
+---
+
+## 📺 Popular Video
+
+[![Watch on YouTube](https://img.shields.io/badge/Watch%20on-YouTube-red?logo=youtube)](https://www.youtube.com/watch?v=YOUR_VIDEO_ID)
+
+<!--
+**Direct video playback is not supported in GitHub READMEs.**
+The above badge links to your video. If you want to embed a video preview, use the following Markdown (replace YOUR_VIDEO_ID):
+-->
+
+[![Popular Video](https://img.youtube.com/vi/YOUR_VIDEO_ID/0.jpg)](https://www.youtube.com/watch?v=YOUR_VIDEO_ID)
+
+---
 
 ## Project Overview
 This project contains command-line Python programs for text encryption and decryption, including educational step-by-step output and key-based/transposition-based workflows.
@@ -82,9 +86,5 @@ python3 VigenereCipher.py
 
 ## License
 Use an MIT License for open educational use by adding a `LICENSE` file.
-
----
-
-**Keywords:** Information Security, Cryptography, Python Cipher Project, Caesar Cipher, Playfair Cipher, Rail Fence Cipher, Vigenere Cipher, Stream Cipher XOR, Encryption, Decryption, Cybersecurity Learning.
 
 ---
