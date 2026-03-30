@@ -15,14 +15,15 @@ A practical Information Security project that demonstrates classic cryptography 
 
 ## 📺 Popular Video
 
-[![Watch on YouTube](https://img.shields.io/badge/Watch%20on-YouTube-red?logo=youtube)](https://www.youtube.com/watch?v=YOUR_VIDEO_ID)
+[![Watch on YouTube](https://img.shields.io/badge/Watch%20on-YouTube-red?logo=youtube)](https://www.youtube.com/shorts/ODGLGSFbezE)
 
-<!--
-**Direct video playback is not supported in GitHub READMEs.**
-The above badge links to your video. If you want to embed a video preview, use the following Markdown (replace YOUR_VIDEO_ID):
--->
+[![Popular Video](https://img.youtube.com/vi/ODGLGSFbezE/0.jpg)](https://www.youtube.com/shorts/ODGLGSFbezE)
 
-[![Popular Video](https://img.youtube.com/vi/YOUR_VIDEO_ID/0.jpg)](https://www.youtube.com/watch?v=YOUR_VIDEO_ID)
+---
+
+## 🔔 Subscribe to My Channel
+
+[Subscribe to my YouTube channel](https://www.youtube.com/channel/UCchwPEbML7EIHRC2tqxdXCA?sub_confirmation=1)
 
 ---
 
