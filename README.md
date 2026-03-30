@@ -1,103 +1,38 @@
-<style>
-   :root {
-      --bg: #0f172a;
-      --card: #111827;
-      --text: #e5e7eb;
-      --muted: #9ca3af;
-      --accent: #22c55e;
-      --accent-soft: #1f2937;
-      --border: #374151;
-   }
+<!-- Real-Time GitHub Metrics Badges -->
 
-   .readme-wrap {
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      line-height: 1.6;
-      color: var(--text);
-      background: linear-gradient(180deg, #0b1220 0%, #111827 100%);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 28px;
-      margin: 8px 0;
-   }
+[![GitHub Stars](https://img.shields.io/github/stars/devxgamer/Information-Security?style=flat-square)](https://github.com/devxgamer/Information-Security/stargazers)
+[![GitHub Forks](https://img.shields.io/github/forks/devxgamer/Information-Security?style=flat-square)](https://github.com/devxgamer/Information-Security/network/members)
+[![GitHub Issues](https://img.shields.io/github/issues/devxgamer/Information-Security?style=flat-square)](https://github.com/devxgamer/Information-Security/issues)
+[![GitHub Last Commit](https://img.shields.io/github/last-commit/devxgamer/Information-Security?style=flat-square)](https://github.com/devxgamer/Information-Security/commits/main)
 
-   .title {
-      margin: 0;
-      font-size: 2rem;
-      color: #f9fafb;
-   }
+# CSS Example Section
 
-   .subtitle {
-      margin-top: 8px;
-      color: var(--muted);
-   }
+Below is a sample CSS code block for styling README content (note: GitHub does not render custom CSS in Markdown, but you can use this for documentation or web projects):
 
-   .badge {
-      display: inline-block;
-      margin: 10px 8px 0 0;
-      padding: 6px 12px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: var(--accent-soft);
-      color: #d1fae5;
-      font-size: 0.85rem;
-   }
+```css
+.readme-wrap {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: #111827;
+  color: #e5e7eb;
+  border-radius: 14px;
+  padding: 28px;
+}
+.badge {
+  display: inline-block;
+  margin: 10px 8px 0 0;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: #1f2937;
+  color: #d1fae5;
+  font-size: 0.85rem;
+}
+```
 
-   .card {
-      margin-top: 20px;
-      padding: 16px;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      background: rgba(17, 24, 39, 0.75);
-   }
+---
 
-   .card h2 {
-      margin-top: 0;
-      color: #f3f4f6;
-      border-left: 4px solid var(--accent);
-      padding-left: 10px;
-   }
+You can copy and adapt this CSS for your own web projects or documentation generators that support custom styles.
 
-   .toc a {
-      color: #93c5fd;
-      text-decoration: none;
-   }
-
-   .toc a:hover {
-      text-decoration: underline;
-   }
-
-   ul {
-      margin: 8px 0 0 20px;
-   }
-
-   code,
-   pre {
-      font-family: "Fira Code", Consolas, monospace;
-   }
-
-   pre {
-      background: #0b1020;
-      border: 1px solid #253047;
-      border-radius: 8px;
-      padding: 14px;
-      overflow-x: auto;
-      color: #d1d5db;
-   }
-
-   .warning {
-      border-left: 4px solid #f59e0b;
-      padding: 10px 12px;
-      background: rgba(245, 158, 11, 0.1);
-      border-radius: 6px;
-      color: #fde68a;
-   }
-
-   .footer-note {
-      margin-top: 18px;
-      color: var(--muted);
-      font-size: 0.92rem;
-   }
-</style>
+---
 
 <div class="readme-wrap">
    <h1 class="title">Information Security Ciphers in Python</h1>
